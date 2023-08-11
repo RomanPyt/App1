@@ -168,7 +168,7 @@ class DemoApp(MDApp):
 
         self.scroll = ScrollView(do_scroll_y=True, pos_hint={'center_y': .55}, size_hint=(1, .75))
         anchor_lay = MDAnchorLayout(size_hint_y=None, anchor_y='top', height=dp(1500))
-        stack_lay = StackLayout(padding=dp(10), spacing=dp(10), size_hint_y=None)
+        stack_lay = StackLayout(padding=dp(10), spacing=dp(10), size_hint_y=.062)
         anchor_lay.add_widget(stack_lay)
         self.scroll.add_widget(anchor_lay)
         self.sm.get_screen('taskscreen').add_widget(self.scroll)
@@ -186,10 +186,10 @@ class DemoApp(MDApp):
                         card = MDCard(radius=[16], pos_hint={'center_x': .5, 'center_y': .5}, elevation=2,
                                       shadow_softness=4,
                                       shadow_offset=(2, -2))
-                        label_name = Label(text=str(task[1]), strikethrough=False, text_size=(dp(300), None),
-                                           font_size=dp(25), bold=True, pos_hint={'center_x': .45, 'center_y': .53})
-                        label_exp = Label(text=str(task[2]), text_size=(dp(300), None), font_size=dp(10), bold=True,
-                                          pos_hint={'center_x': .455, 'center_y': .3})
+                        label_name = Label(text=str(task[1]), strikethrough=False, text_size=(dp(150), None),
+                                           font_size=dp(25), bold=True, pos_hint={'center_x': .43, 'center_y': .53})
+                        label_exp = Label(text=str(task[2]), text_size=(dp(150), None), font_size=dp(10), bold=True,
+                                          pos_hint={'center_x': .435, 'center_y': .3})
                         del_button = MDIconButton(icon='trash-can-outline', pos_hint={'center_x': .9, 'center_y': .5},
                                                   id=str(task[0]),
                                                   on_press=self.del_task)
@@ -208,10 +208,10 @@ class DemoApp(MDApp):
                         card = MDCard(radius=[16], pos_hint={'center_x': .5, 'center_y': .5}, elevation=2,
                                       shadow_softness=4,
                                       shadow_offset=(2, -2))
-                        label_name = Label(text=str(task[1]), strikethrough=False, text_size=(dp(300), None),
-                                           font_size=dp(25), bold=True, pos_hint={'center_x': .45, 'center_y': .53})
-                        label_exp = Label(text=str(task[2]), text_size=(dp(300), None), font_size=dp(10), bold=True,
-                                          pos_hint={'center_x': .455, 'center_y': .3})
+                        label_name = Label(text=str(task[1]), strikethrough=True, text_size=(dp(150), None),
+                                           font_size=dp(25), bold=True, pos_hint={'center_x': .43, 'center_y': .53})
+                        label_exp = Label(text=str(task[2]), text_size=(dp(150), None), font_size=dp(10), bold=True,
+                                          pos_hint={'center_x': .435, 'center_y': .3})
                         del_button = MDIconButton(icon='trash-can-outline', pos_hint={'center_x': .9, 'center_y': .5},
                                                   id=str(task[0]),
                                                   on_press=self.del_task)
@@ -230,10 +230,10 @@ class DemoApp(MDApp):
                     card = MDCard(radius=[16], pos_hint={'center_x': .5, 'center_y': .5}, elevation=2,
                                   shadow_softness=4,
                                   shadow_offset=(2, -2))
-                    label_name = Label(text=str(task[1]), strikethrough=False, text_size=(dp(300), None),
-                                       font_size=dp(25), bold=True, pos_hint={'center_x': .45, 'center_y': .53})
-                    label_exp = Label(text=str(task[2]), text_size=(dp(300), None), font_size=dp(10), bold=True,
-                                      pos_hint={'center_x': .455, 'center_y': .3})
+                    label_name = Label(text=str(task[1]), strikethrough=False, text_size=(dp(150), None),
+                                       font_size=dp(25), bold=True, pos_hint={'center_x': .43, 'center_y': .53})
+                    label_exp = Label(text=str(task[2]), text_size=(dp(150), None), font_size=dp(10), bold=True,
+                                      pos_hint={'center_x': .435, 'center_y': .3})
                     del_button = MDIconButton(icon='trash-can-outline', pos_hint={'center_x': .9, 'center_y': .5},
                                               id=str(task[0]),
                                               on_press=self.del_task)
@@ -447,6 +447,9 @@ class DemoApp(MDApp):
         db2.create_quest(self.sm.get_screen('newquest').ids.quest_name.text,
                          self.sm.get_screen('newquest').ids.quest_exp.text,
                          self.sm.get_screen('newquest').ids.date_button.text)
+        self.sm.get_screen('newquest').ids.quest_name.text = ''
+        self.sm.get_screen('newquest').ids.quest_exp.text = ''
+        self.sm.get_screen('newquest').ids.date_button.text = 'Date'
 
     def build_quest(self):
         quests = db2.get_quests()
@@ -462,11 +465,11 @@ class DemoApp(MDApp):
                                  size=(dp(64), dp(64)), id=str(quest[2]), text=str(quest[0]), on_press=self.quest_press)
             card = MDCard(radius=[16], pos_hint={'center_x': .5, 'center_y': .5}, elevation=2, shadow_softness=4,
                           shadow_offset=(2, -2))
-            label_name = Label(text=str(quest[1]), text_size=(dp(300), None), font_size=dp(30), bold=True,
+            label_name = Label(text=str(quest[1]), text_size=(dp(150), None), font_size=dp(30), bold=True,
                                pos_hint={'center_x': .33, 'center_y': .5})
-            label_exp = Label(text=str(quest[2]), text_size=(dp(300), None), font_size=dp(12), bold=True,
+            label_exp = Label(text=str(quest[2]), text_size=(dp(150), None), font_size=dp(12), bold=True,
                               pos_hint={'center_x': .335, 'center_y': .292}, color='darkgrey')
-            label_data = Label(text=str(quest[3]), text_size=(dp(300), None), font_size=dp(25), bold=True,
+            label_data = Label(text=str(quest[3]), text_size=(dp(150), None), font_size=dp(25), bold=True,
                                pos_hint={'center_x': .331, 'center_y': .77}, color='grey')
             del_button = MDIconButton(icon='trash-can-outline', pos_hint={'center_x': .92, 'center_y': .77}, id=str(quest[0]),
                                       on_press=self.del_quest)
