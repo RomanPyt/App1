@@ -5,26 +5,32 @@ KV = '''
     MDBoxLayout:
         size_hint: 1, .06
         pos_hint: {'center_x': .5, 'center_y': .96}
-        MDRectangleFlatButton:
-            id: button
-            text: app.button_text_day
-            font_size: '30dp'
-            bold: True
-            pos_hint: {"center_x": .5, "center_y": .52}
-            theme_text_color: "Custom"
-            text_color: "white"
-            line_color: 0, 0, 0, 0
-            on_release: app.menu_open()
-        MDIconButton:
-            icon: 'plus'
-            icon_size: '30dp'
-            #pos_hint: {'center_x': .4, 'center_y': .05}
-            on_release: root.manager.current = 'newtask'
+        MDAnchorLayout:
+            anchor_y: 'center'
+            anchor_x: 'left'
+            MDRectangleFlatButton:
+                id: button
+                text: app.button_text_day
+                font_size: '30dp'
+                bold: True
+                #pos_hint: {"center_x": .5, "center_y": .52}
+                theme_text_color: "Custom"
+                text_color: "white"
+                line_color: 0, 0, 0, 0
+                on_release: app.menu_open()
+        MDAnchorLayout:
+            anchor_y: 'center'
+            anchor_x: 'right'
+            MDIconButton:
+                icon: 'plus'
+                icon_size: '30dp'
+                #pos_hint: {'center_x': .1, 'center_y': .5}
+                on_release: root.manager.current = 'newtask'
     NavigationBar:
         size_hint: .5, .1
         pos_hint: {'center_x': .5, 'center_y': .1}
         elevation: 2
-        md_bg_color: '#444444'
+        md_bg_color: '#212121'
         radius: [16]
         MDFloatLayout:
             MDFloatingActionButton:
@@ -33,7 +39,7 @@ KV = '''
                 icon_size: '35dp'
                 #theme_text_color: 'Custom'
                 #text_color: .28, .11, .51, 1
-                md_bg_color: '#5b5b5b'
+                md_bg_color: '#333333'
                 on_release:
                     root.manager.current = 'taskscreen'
             MDIconButton:
@@ -123,7 +129,7 @@ KV = '''
 
             MDLabel:
                 pos_hint: {'center_x': .55, 'center_y': .53}
-                text: 'Monday'
+                text: 'Mon'
         MDFloatLayout:
             MDCard:
                 radius: [16]
@@ -138,7 +144,7 @@ KV = '''
 
             MDLabel:
                 pos_hint: {'center_x': .55, 'center_y': .53}
-                text: 'Tuesday'
+                text: 'Tue'
         MDFloatLayout:
             MDCard:
                 radius: [16]
@@ -153,7 +159,7 @@ KV = '''
 
             MDLabel:
                 pos_hint: {'center_x': .55, 'center_y': .53}
-                text: 'Wednesday'
+                text: 'Wed'
         MDFloatLayout:
             MDCard:
                 radius: [16]
@@ -168,7 +174,7 @@ KV = '''
 
             MDLabel:
                 pos_hint: {'center_x': .55, 'center_y': .53}
-                text: 'Thursday'
+                text: 'Thu'
         MDFloatLayout:
             MDCard:
                 radius: [16]
@@ -183,7 +189,7 @@ KV = '''
 
             MDLabel:
                 pos_hint: {'center_x': .55, 'center_y': .53}
-                text: 'Friday'
+                text: 'Fri'
         MDFloatLayout:
             MDCard:
                 radius: [16]
@@ -198,7 +204,7 @@ KV = '''
 
             MDLabel:
                 pos_hint: {'center_x': .55, 'center_y': .53}
-                text: 'Saturday'
+                text: 'Sat'
         MDFloatLayout:
             MDCard:
                 radius: [16]
@@ -213,32 +219,38 @@ KV = '''
 
             MDLabel:
                 pos_hint: {'center_x': .55, 'center_y': .53}
-                text: 'Sunday'
+                text: 'Sun'
 
 
 <QuestScreen>:
     MDBoxLayout:
         size_hint: 1, .06
-        pos_hint: {'center_x': .5, 'center_y': .95}
-        MDLabel:
-            padding: '10dp'
-            text: 'Quests'
-            #pos_hint: {'center_y': .95}
-            #halign: 'left'
-            font_size: '30dp'
-            bold: True
-        MDIconButton:
-            icon: 'plus'
-            icon_size: '30dp'
-            #pos_hint: {'center_x': .9, 'center_y': .1}
-            on_release: root.manager.current = 'newquest'
+        pos_hint: {'center_x': .5, 'center_y': .96}
+        MDAnchorLayout:
+            anchor_y: 'center'
+            anchor_x: 'left'
+            MDLabel:
+                padding: '10dp'
+                text: 'Quests'
+                #pos_hint: {'center_y': .95}
+                #halign: 'left'
+                font_size: '30dp'
+                bold: False
+        MDAnchorLayout:
+            anchor_y: 'center'
+            anchor_x: 'right'
+            MDIconButton:
+                icon: 'plus'
+                icon_size: '30dp'
+                #pos_hint: {'center_x': .9, 'center_y': .1}
+                on_release: root.manager.current = 'newquest'
     
     
     NavigationBar:
         size_hint: .5, .1
         pos_hint: {'center_x': .5, 'center_y': .1}
         elevation: 2
-        md_bg_color: '#444444'
+        md_bg_color: '#212121'
         radius: [16]
         MDFloatLayout:
             MDIconButton:
@@ -253,7 +265,7 @@ KV = '''
                 icon_size: '35dp'
                 #theme_text_color: 'Custom'
                 #text_color: .28, .11, .51, 1
-                md_bg_color: '#5b5b5b'
+                md_bg_color: '#333333'
                 on_release:
                     root.manager.current = 'questscreen'
 
@@ -304,7 +316,7 @@ KV = '''
         line_color: 'white'
         text_color: 'white'
         icon_color: 'white'
-        text: "Data"
+        text: "Date"
         icon: 'calendar'
         pos_hint: {'center_x': .5, 'center_y': .5}
         on_release: app.show_date_picker()
@@ -475,7 +487,7 @@ KV = '''
         size_hint: .5, .1
         pos_hint: {'center_x': .5, 'center_y': .1}
         elevation: 2
-        md_bg_color: '#444444'
+        md_bg_color: '#212121'
         radius: [16]
         MDFloatLayout:
             MDIconButton:
@@ -497,7 +509,7 @@ KV = '''
                 icon_size: '35dp'
                 #theme_text_color: 'Custom'
                 #text_color: .28, .11, .51, 1
-                md_bg_color: '#5b5b5b'
+                md_bg_color: '#333333'
                 on_release:
                     root.manager.current = 'profilescreen'
 
